@@ -5,13 +5,13 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/todos")
+    fetch("http://98.70.31.9:5000/todos")
       .then(res => res.json())
       .then(setTodos);
   }, []);
 
   const addTodo = async () => {
-    const res = await fetch("http://localhost:5000/todos", {
+    const res = await fetch("http://98.70.31.9:5000/todos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text })
@@ -27,7 +27,7 @@ function App() {
       <input value={text} onChange={e => setText(e.target.value)} />
       <button onClick={addTodo}>Add</button>
       <ul>
-        {todos.map(t => <li key={t._id}>{t.text}</li>)}
+        {todos.map(t => <li key={t.id}>{t.text}</li>)}
       </ul>
     </div>
   );
