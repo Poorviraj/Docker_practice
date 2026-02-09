@@ -5,13 +5,13 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/todos")
+    fetch(`${import.meta.env.VITE_API_URL}/todos`)
       .then(res => res.json())
       .then(setTodos);
   }, []);
 
   const addTodo = async () => {
-    const res = await fetch("http://localhost:5000/todos", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/todos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text })
